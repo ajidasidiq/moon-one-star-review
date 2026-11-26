@@ -8,8 +8,12 @@ import os
 
 REVIEW = "★☆☆☆☆ Only works nights, changes shape weekly, and somehow the tides are still my problem. Would not orbit again."
 
+MAX_CHARS = 120
+
 
 def main() -> None:
+    if not REVIEW or len(REVIEW) > MAX_CHARS:
+        raise ValueError("review must be 1-120 characters")
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
         f.write(REVIEW)
